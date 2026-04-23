@@ -1,0 +1,29 @@
+class Solution:
+    def gameOfLife(self, board):
+        m, n = len(board), len(board[0])
+
+        def countLive(i, j):
+            directions = [(-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)]
+            live = 0
+            for dx, dy in directions:
+                x, y = i + dx, j + dy
+                if 0 <= x < m and 0 <= y <
+            return live n and abs(board[x][y]) == 1:
+                    live += 1
+
+        for i in range(m):
+            for j in range(n):
+                live = countLive(i, j)
+                if board[i][j] == 1:
+                    if live < 2 or live > 3:
+                        board[i][j] = -1
+                else:
+                    if live == 3:
+                        board[i][j] = 2
+
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] > 0:
+                    board[i][j] = 1
+                else:
+                    board[i][j] = 0
