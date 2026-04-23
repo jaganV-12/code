@@ -1,0 +1,16 @@
+class Solution:
+    def maxProfit(self, prices):
+        if not prices:
+            return 0
+
+        buy = -prices[0]
+        sell = 0
+        cooldown = 0
+
+        for price in prices[1:]:
+            prev_buy = buy
+            buy = max(buy, cooldown - price)
+            cooldown = sell
+            sell = max(sell, prev_buy + price)
+
+        return sell
